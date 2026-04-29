@@ -1,0 +1,66 @@
+# Declarative mirror of src/tasks.py — descriptions kept short. Real prompts
+# live in src/tasks.py so they can interpolate the actual raw_input.
+
+interpret_task:
+  agent: profile_analyst
+  description: >
+    Normalize raw student input into a validated StudentProfile object,
+    inferring sensible defaults for missing fields.
+  expected_output: A valid StudentProfile JSON.
+
+diagnostic_task:
+  agent: diagnostic_evaluator
+  description: >
+    Produce a SkillGapReport: per-topic proficiency, target_level, gap_score,
+    and risk classification, with a short evidence note for each call.
+  expected_output: A valid SkillGapReport JSON.
+  context: [interpret_task]
+
+prioritize_task:
+  agent: topic_prioritizer
+  description: >
+    Output a RankedTopicList ordered by importance × gap × deadline pressure
+    and respecting prerequisite chains.
+  expected_output: A valid RankedTopicList JSON.
+  context: [interpret_task, diagnostic_task]
+
+schedule_task:
+  agent: schedule_planner
+  description: >
+    Build a TimeGrid distributing topics across concrete sessions until the
+    deadline. Honour daily_window, weekly_hours, breaks, and rest days.
+  expected_output: A valid TimeGrid JSON.
+  context: [interpret_task, prioritize_task]
+
+strategy_task:
+  agent: learning_strategist
+  description: >
+    Annotate every session with method, resources_hint, and expected_outcome,
+    matching technique to gap level and learner preference.
+  expected_output: A valid TechniqueMap JSON.
+  context: [diagnostic_task, schedule_task]
+
+adaptation_task:
+  agent: adaptation_designer
+  description: >
+    Define AdaptationRules covering missed_session, low_quiz_score,
+    ahead_of_schedule, and unexpected_blocked_day, plus a weekly review
+    template.
+  expected_output: A valid AdaptationRules JSON.
+  context: [schedule_task, strategy_task]
+
+compose_task:
+  agent: plan_composer
+  description: >
+    Stitch all artifacts into a Markdown study plan covering the seven
+    required sections, plus a one-paragraph summary.
+  expected_output: A valid FinalStudyPlan JSON.
+  context: [interpret_task, diagnostic_task, prioritize_task, schedule_task, strategy_task, adaptation_task]
+
+review_task:
+  agent: plan_reviewer
+  description: >
+    Audit the final plan against the StudentProfile. Either pass or revise
+    with a corrected plan and an explicit issue list.
+  expected_output: A valid ReviewReport JSON.
+  context: [interpret_task, compose_task]

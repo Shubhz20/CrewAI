@@ -1,0 +1,42 @@
+{
+  "goal": "Score 270+ in NEET 2026",
+  "deadline": "2026-05-03",
+  "weekly_hours": 35,
+  "daily_window": ["16:30", "22:00"],
+  "learning_preference": "practice_heavy",
+  "subjects": [
+    {
+      "name": "Physics",
+      "topics": [
+        {"name": "Mechanics", "self_rating": 4, "notes": "Solid in kinematics, weaker in rotational"},
+        {"name": "Thermodynamics", "self_rating": 3},
+        {"name": "Electromagnetism", "self_rating": 2, "notes": "Struggles with Gauss law applications"},
+        {"name": "Optics", "self_rating": 3},
+        {"name": "Modern Physics", "self_rating": 4}
+      ]
+    },
+    {
+      "name": "Chemistry",
+      "topics": [
+        {"name": "Physical Chemistry", "self_rating": 3},
+        {"name": "Organic Chemistry", "self_rating": 2, "notes": "Reaction mechanisms unclear"},
+        {"name": "Inorganic Chemistry", "self_rating": 4}
+      ]
+    },
+    {
+      "name": "Biology",
+      "topics": [
+        {"name": "Cell Biology", "self_rating": 4},
+        {"name": "Human Physiology", "self_rating": 3},
+        {"name": "Genetics", "self_rating": 2, "notes": "Confused by linkage and Mendelian crosses"},
+        {"name": "Ecology", "self_rating": 4},
+        {"name": "Plant Physiology", "self_rating": 3}
+      ]
+    }
+  ],
+  "constraints": [
+    "No study on Sundays — family day",
+    "Coaching class Tue/Thu 18:00-20:00 (block these out)",
+    "Weakest in Organic Chemistry and Genetics — needs early focus"
+  ]
+}
