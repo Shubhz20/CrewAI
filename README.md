@@ -18,6 +18,7 @@ Input → Profile Analyst → Diagnostic → Prioritizer →
 ```
 
 **Key features:**
+
 - Accepts a structured JSON student profile (goal, deadline, weekly hours, subjects & self-ratings)
 - Generates topic-prioritized, day-wise schedules with recommended learning techniques
 - Includes adaptation rules for missed sessions and auto re-planning
@@ -50,13 +51,13 @@ python main.py --input examples/sample_input.json --output my_plan.md
 
 ## 🛠️ Tech Stack
 
-| Tool | Purpose |
-|------|---------|
-| [CrewAI](https://docs.crewai.com) `>=0.86.0` | Multi-agent orchestration framework |
-| [Pydantic](https://docs.pydantic.dev) `>=2.7` | Typed data contracts between agents |
-| [LiteLLM](https://docs.litellm.ai) | LLM provider abstraction (OpenAI, Anthropic, etc.) |
-| [python-dotenv](https://pypi.org/project/python-dotenv/) | Environment variable management |
-| [PyYAML](https://pypi.org/project/PyYAML/) | Declarative agent & task configuration |
+| Tool                                                     | Purpose                                            |
+| -------------------------------------------------------- | -------------------------------------------------- |
+| [CrewAI](https://docs.crewai.com) `>=0.86.0`             | Multi-agent orchestration framework                |
+| [Pydantic](https://docs.pydantic.dev) `>=2.7`            | Typed data contracts between agents                |
+| [LiteLLM](https://docs.litellm.ai)                       | LLM provider abstraction (OpenAI, Anthropic, etc.) |
+| [python-dotenv](https://pypi.org/project/python-dotenv/) | Environment variable management                    |
+| [PyYAML](https://pypi.org/project/PyYAML/)               | Declarative agent & task configuration             |
 
 ---
 
